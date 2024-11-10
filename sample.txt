@@ -1,0 +1,48 @@
+{
+    with {
+        mk-rec {
+            fun {body-proc} {
+                with {
+                    facX {
+                        fun {facY} {
+                            with {
+                                f {
+                                    fun {x} {
+                                        {facY facY} x
+                                    }
+                                }
+                            }
+                            {body-proc f}
+                        }
+                    }
+                }
+
+                {facX facX}
+            }
+        }
+    }
+
+    {with {fib {mk-rec
+                {fun {fib}
+                    ; Usual fib
+                    {fun {n}
+                        {if {or {= n 0} {= n 1}}
+                            1
+                            {+ {fib {- n 1}}
+                                {fib {- n 2}}}}}}}}
+
+            {fib 10}}}
+
+
+
+
+
+
+
+{+ {with {fac {fun {n} {if {= n 0} 1 {* n {fac {- n 1}}}}}} {fac 10}} 7}
+{with {}}
+
+(app (fun (mkrec) (app (fun (fac) (id f---fac (num 10.000000))) (id f---mkrec (fun (fx) (fun (n) (if (equal (id n) (num 0.000000)) (num 1.000000) (mul (id n) (id f---fX (sub (id n) (num 1.000000)))))))))) 
+(fun (bodyproc) (app (fun (fX) (id f---fX (id fX))) (fun (fY) (app (fun (f) (id f---bodyproc (id f))) (fun (x) (app (id f---fY (id fY)) (id x))))))))
+
+(app (fun mk-rec (app (fun fac (app (id fac) (num 10))) (app (id mk-rec) (fun fac (fun n (if (eq (id n) (num 0)) (num 1) (mult (id n) (app (id fac) (sub (id n) (num 1)))))))))) (fun body-proc (app (fun facX (app (id facX) (id facX))) (fun facY (app (fun f (app (id body-proc) (id f))) (fun x (app (app (id facY) (id facY)) (id x))))))))
